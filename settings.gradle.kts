@@ -1,0 +1,16 @@
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
+rootProject.name = "SpringCloudStudy"
+
+// 项目模块
+include("common", "model", "service", "mybatisPlus_generator")
+
+include(
+    "service:service-payment-8001",
+    "service:service-order-9001",
+    "service:service-order-restClient-9001",
+    "service:service-gateway-9527"
+)
+
+include("common:common-config", "common:common-utils")

@@ -1,0 +1,72 @@
+[versions]
+# dependency versions
+hutool-version = "5.8.22"
+druid-version = "1.1.20"
+springCloud-version = "2023.0.1"
+springCloudAlibaba-version = "2023.0.1.0"
+mybatisPlus-version = "3.5.7"
+fastjson-version = "2.0.52"
+persistence-api-version = "1.0.2"
+swagger3-version = "2.2.0"
+micrometer-version = "1.2.0"
+zipkin-reporter-brave-version = "2.17.0"
+feign-micrometer-version = "12.5"
+micrometer-observation-version = "1.12.0"
+
+# plugin versions
+spring-boot-plugin-version = "3.2.8"
+springDependencyManagement = "1.1.6"
+kotlinJVM = "1.9.24"
+
+[libraries]
+hutool = { module = "cn.hutool:hutool-all", version.ref = "hutool-version" }
+druid = { module = "com.alibaba:druid-spring-boot-starter", version.ref = "druid-version" }
+springCloud = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "springCloud-version" }
+
+micrometerBom = { module = "io.micrometer:micrometer-tracing-bom", version.ref = "micrometer-version" }
+# micrometer-tracing指标追踪
+micrometer-trace = { module = "io.micrometer:micrometer-tracing", version.ref = "micrometer-version" }
+# micrometer-tracing-bridge-brave适配zipkin的桥接包
+micrometer-trace-bridge-brave = { module = "io.micrometer:micrometer-tracing-bridge-brave", version.ref = "micrometer-version" }
+micrometer-observation = { module = "io.micrometer:micrometer-observation", version.ref = "micrometer-observation-version" }
+feign-micrometer = { module = "io.github.openfeign:feign-micrometer", version.ref = "feign-micrometer-version" }
+zipkin-reporter-brave = { module = "io.zipkin.reporter2:zipkin-reporter-brave", version.ref = "zipkin-reporter-brave-version" }
+spring-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+
+springCloudAlibaba = { module = "com.alibaba.cloud:spring-cloud-alibaba-dependencies", version.ref = "springCloudAlibaba-version" }
+fastjson = { module = "com.alibaba.fastjson2:fastjson2-kotlin", version.ref = "fastjson-version" }
+fastjson-spring = { module = "com.alibaba.fastjson2:fastjson2-extension-spring6", version.ref = "fastjson-version" }
+persistence-api = { module = "javax.persistence:persistence-api", version.ref = "persistence-api-version" }
+swagger3 = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "swagger3-version" }
+mybatisPlus = { module = "com.baomidou:mybatis-plus-spring-boot3-starter", version.ref = "mybatisPlus-version" }
+httpClient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version = "5.3.1" }
+httpClient5-feign = { module = "io.github.openfeign:feign-hc5", version = "13.1" }
+
+# springBoot 自带版本
+springWeb = { module = "org.springframework.boot:spring-boot-starter-web" }
+mysql = { module = "com.mysql:mysql-connector-j" }
+jackson = { module = "com.fasterxml.jackson.module:jackson-module-kotlin"}
+
+
+[plugins]
+springBootPlugin = { id = "org.springframework.boot", version.ref = "spring-boot-plugin-version" }
+springDependencyManagementPlugin = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }
+kotlinJvmPlugin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinJVM" }
+kotlinSpringPlugin = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlinJVM" }
+
+[bundles]
+# 数据库连接三件套
+sql = ["hutool", "druid", "persistence-api"]
+
+# 开发模块分组
+common = ["fastjson", "fastjson-spring", "springWeb", "mybatisPlus", "swagger3"]
+
+# httpCient
+httpClient = ["httpClient5", "httpClient5-feign"]
+
+#BOM
+springCloudBom = ["springCloud", "springCloudAlibaba", "micrometerBom"]
+
+# 监控指标追踪
+micrometer = ["micrometer-trace", "micrometer-trace-bridge-brave", "feign-micrometer", "zipkin-reporter-brave",
+    "micrometer-observation", "spring-actuator"]
