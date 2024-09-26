@@ -5,14 +5,14 @@ val ignoreProject = listOf("service-gateway-9527")
 
 subprojects {
     dependencies {
-        // global service dependency
+        // 全局服务依赖
         implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
         implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
 
+        // 非全局服务依赖
         if (name in ignoreProject) return@dependencies
 
-        // 导入本地依赖（common 中包含 web开发依赖）
-        implementation(project(":model"))
+        // 导入本地依赖（common 中包含 web开发依赖, model, utils, config）
         importSubProjects(findProject(":common"))
 
         // web开发依赖
@@ -22,6 +22,7 @@ subprojects {
         // cloud
         implementation("org.springframework.cloud:spring-cloud-starter-consul-config")
         implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+        implementation("org.springframework.cloud:spring-cloud-starter-loadbalancer")
         implementation(rootProject.libs.bundles.httpClient)
 
         // mysql驱动

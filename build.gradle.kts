@@ -1,4 +1,3 @@
-
 // 插件
 plugins {
     alias(libs.plugins.kotlinSpringPlugin)
@@ -8,7 +7,7 @@ plugins {
 }
 
 allprojects {
-    group = "org.atxiong"
+    group = "org.atxiong.cloud"
     version = "0.0.1-SNAPSHOT"
 
     // 需要 用到 rootProject

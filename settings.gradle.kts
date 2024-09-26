@@ -14,3 +14,5 @@ include(
 )
 
 include("common:common-config", "common:common-utils")
+include("common:common-api")
+findProject(":common:common-api")?.name = "common-api"

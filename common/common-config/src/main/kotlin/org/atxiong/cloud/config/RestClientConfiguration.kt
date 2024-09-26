@@ -14,6 +14,10 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory
 @Configuration
 class RestClientConfiguration {
 
+    companion object {
+        val commonPath = "http://cloud-gateway-service"
+    }
+
     @Bean
     @LoadBalanced
     fun restClientBuilder(): RestClient.Builder {
@@ -22,7 +26,9 @@ class RestClientConfiguration {
 
     @Bean
     fun orderClient(builder: RestClient.Builder): PayApiExchange {
-        val restClient = builder.baseUrl("http://cloud-payment-service").build()
+//        val restClient = builder.baseUrl("http://cloud-payment-service").build()
+        // 配合网关通用api设置
+        val restClient = builder.baseUrl(commonPath).build()
         val adapter = RestClientAdapter.create(restClient)
         val factory = HttpServiceProxyFactory.builderFor(adapter).build()
 
