@@ -34,7 +34,7 @@ class PageUtils {
 class ServletUtils {
 
     companion object {
-        private fun getRequest(): HttpServletRequest {
+        fun getRequest(): HttpServletRequest {
             return (RequestContextHolder.getRequestAttributes() as ServletRequestAttributes).request
         }
 
