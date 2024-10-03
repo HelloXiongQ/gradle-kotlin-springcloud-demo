@@ -10,7 +10,9 @@ include(
     "service:service-payment-8001",
     "service:service-order-9001",
     "service:service-order-restClient-9001",
-    "service:service-gateway-9527"
+    "service:service-gateway-9527",
+    "service:service-order-alibaba-7001",
+    "service:service-payment-alibaba-6001",
 )
 
 include("common:common-config", "common:common-utils")

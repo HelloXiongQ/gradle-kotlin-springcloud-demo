@@ -7,6 +7,10 @@ dependencies {
     // 限流
     implementation("io.github.resilience4j:resilience4j-ratelimiter")
 
+    //    consul
+    implementation("org.springframework.cloud:spring-cloud-starter-consul-config")
+    implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
+
     // 使用micrometer
     implementation(libs.bundles.micrometer)
 }

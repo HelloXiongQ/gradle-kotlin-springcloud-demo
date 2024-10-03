@@ -7,7 +7,6 @@ subprojects {
     dependencies {
         // 全局服务依赖
         implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
-        implementation("org.springframework.cloud:spring-cloud-starter-consul-discovery")
 
         // 非全局服务依赖
         if (name in ignoreProject) return@dependencies
@@ -20,7 +19,6 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-devtools")
 
         // cloud
-        implementation("org.springframework.cloud:spring-cloud-starter-consul-config")
         implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
         implementation("org.springframework.cloud:spring-cloud-starter-loadbalancer")
         implementation(rootProject.libs.bundles.httpClient)

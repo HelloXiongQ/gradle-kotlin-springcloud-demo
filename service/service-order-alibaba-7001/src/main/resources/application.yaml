@@ -1,0 +1,42 @@
+server:
+  port: 7001
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${db.url}
+    username: ${db.username}
+    password: ${db.password}
+  devtools:
+    restart:
+      enabled: true  # 开启热更新
+      additional-paths: src/main/kotlin
+      exclude: test/**
+  profiles:
+    active: dev
+  cloud:
+    openfeign:
+      client:
+        config:
+          cloud-payment-service:
+            read-timeout: 20000
+      httpclient: # 配置httpClient
+        hc5:
+          enabled: true
+      compression: #开启请求压缩格式为GZIP
+        request:
+          enabled: true
+          min-request-size: 2048
+          mime-types: text/xml,application/xml,application/json
+        response:
+          enabled: true
+
+# zipkin 配置
+management:
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0 #采样率默认为0.1(0.1就是10次只能有一次被记录下来)，值越大收集越及时。
