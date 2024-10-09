@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
-    @ExceptionHandler(RuntimeException::class)
+    @ExceptionHandler(Exception::class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     fun handleException(e: Exception): HttpResult<Unit> {
         e.printStackTrace()

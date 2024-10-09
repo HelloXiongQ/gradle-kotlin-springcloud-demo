@@ -4,15 +4,15 @@ plugins {
 rootProject.name = "SpringCloudStudy"
 
 // 项目模块
-include("common", "model", "service", "mybatisPlus_generator")
+include("common", "model", "service", "mybatisPlus_generator", "gateway-9527", "alibaba-gateway-9527")
 
 include(
     "service:service-payment-8001",
     "service:service-order-9001",
     "service:service-order-restClient-9001",
-    "service:service-gateway-9527",
     "service:service-order-alibaba-7001",
     "service:service-payment-alibaba-6001",
+    "service:service-sentinel-alibaba-5221",
 )
 
 include("common:common-config", "common:common-utils")

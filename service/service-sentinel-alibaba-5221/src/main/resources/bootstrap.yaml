@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: cloud-sentinel-alibaba-service
+  cloud:
+    nacos: # nacos 配置
+      discovery:
+        server-addr: ${nacos.address}
+      username: ${nacos.username}
+      password: ${nacos.password}
+    sentinel: # sentinel 配置
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+      web-context-unify: false # controller 对 service 层的调用不认为是在同一个根链路
+      datasource: #持久化规则配置
+        ds1:
+          nacos:
+            server-addr: ${nacos.address}
+            data-id: ${spring.application.name}  #nacos 配置文件名
+            group-id: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow  # 配置sentinel 服务限制类型
+            username: ${nacos.username}
+            password: ${nacos.password}
+
+
+  # 导入私有配置
+  config:
+    import: file:${user.dir}/private.properties

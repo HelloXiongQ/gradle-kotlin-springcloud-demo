@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: cloud-gateway-alibaba-service
+  cloud:
+    nacos: # nacos 配置
+      discovery:
+        server-addr: ${nacos.address}
+      #        group: dev_group
+      username: ${nacos.username}
+      password: ${nacos.password}
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8080
+#        port: 8719
+  # 导入私有配置
+  config:
+    import: file:${user.dir}/private.properties

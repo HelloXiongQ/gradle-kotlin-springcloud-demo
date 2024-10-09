@@ -33,7 +33,7 @@ class OrderController(
     }
 
     @GetMapping("test")
-    fun getValue(@Value("\${order.info}") a: String): String {
+    fun getValue(@Value("\${common.info}") a: String): String {
         return a
     }
 

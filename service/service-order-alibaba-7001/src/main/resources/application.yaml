@@ -31,6 +31,9 @@ spring:
           mime-types: text/xml,application/xml,application/json
         response:
           enabled: true
+feign: # 开启 feign 对 sentinel 整合的支持
+  sentinel:
+    enabled: true
 
 # zipkin 配置
 management:

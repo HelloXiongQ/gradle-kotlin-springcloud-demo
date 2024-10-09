@@ -1,9 +1,11 @@
 package org.atxiong.cloud.controller
 
+import jakarta.annotation.Resource
 import org.atxiong.cloud.common.entity.HttpResult
 import org.atxiong.cloud.common.entity.HttpStatusEnum
 import org.atxiong.cloud.http.PayAlibabaApi
 import org.atxiong.cloud.payment.dto.PayDTO
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.*
 
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("consumer/order")
 class OrderController(
-    private val payApi: PayAlibabaApi,
+    @Qualifier("org.atxiong.cloud.http.PayAlibabaApi") private val payApi: PayAlibabaApi,
 ) {
 
     @PostMapping

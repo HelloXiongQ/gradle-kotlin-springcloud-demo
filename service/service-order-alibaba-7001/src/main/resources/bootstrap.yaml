@@ -5,13 +5,17 @@ spring:
     nacos: # nacos 配置
       discovery:
         server-addr: ${nacos.address}
-        group: dev_group
+      #        group: dev_group
       username: ${nacos.username}
       password: ${nacos.password}
       config:
         server-addr: ${nacos.address}
         file-extension: yaml
         namespace: dev_namespace
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
 
 
   # 导入私有配置
