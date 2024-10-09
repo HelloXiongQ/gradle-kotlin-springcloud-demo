@@ -26,7 +26,7 @@ class OrderCircuitController (
     @GetMapping("{id}")
     @CircuitBreaker(name = "cloud-payment-service", fallbackMethod = "fallbackMethod")
     fun myCircuitBreaker(@PathVariable id: Long): HttpResult<String> {
-        return HttpResult.success(client.myCircuit(id))
+        return HttpResult.success(client.myCircuit(id));
     }
 
     /**
