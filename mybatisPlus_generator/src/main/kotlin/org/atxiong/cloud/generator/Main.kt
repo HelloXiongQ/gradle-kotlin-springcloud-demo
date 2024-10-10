@@ -1,4 +1,4 @@
-package org.atxiong
+package org.atxiong.org.atxiong.cloud.generator
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig
@@ -8,11 +8,8 @@ import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery
 import com.baomidou.mybatisplus.generator.config.rules.DateType
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine
 import com.baomidou.mybatisplus.generator.query.SQLQuery
-import org.springframework.core.io.ClassPathResource
-import org.springframework.core.io.support.PropertiesLoaderUtils
 import java.io.File
 import java.io.FileInputStream
-import java.io.InputStream
 import java.util.*
 
 object Config {

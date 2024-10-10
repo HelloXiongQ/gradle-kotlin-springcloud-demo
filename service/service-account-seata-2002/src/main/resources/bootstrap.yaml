@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: cloud-account-seata-service
+  cloud:
+    nacos: # nacos 配置
+      discovery:
+        server-addr: ${nacos.address}
+      username: ${nacos.username}
+      password: ${nacos.password}
+
+  # 导入私有配置
+  config:
+    import: file:${user.dir}/private.properties
